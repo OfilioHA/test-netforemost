@@ -1,8 +1,18 @@
-# Analisis
+## Observaciones
+
+- El dato de cocina equipada se repetia en "Cocina equipada" - "Cocina Equipada".
+- El campo "Calefacción individual" posee campos texto y booleandos, se reemplaza TRUE por SI
+- Algunos campos en vez de devolver "FALSE" devuelven texto vacio, se reeemplaza por un "false" booleano
+
+## Analisis
 
 Se separara la información del CSV en la siguiente estructura
 
 ### Accomation - (Alojamiento)
+
+El campo "ID" se guarda como "original_id", esto para poder referenciarlo de ser necesario y no perder la secuencia de la tabla.
+
+- original_id - ID
 - title - Titulo
 - advertiser - Anunciante
 - description - Descripcion
@@ -16,6 +26,7 @@ Se separara la información del CSV en la siguiente estructura
 - built_in - Construido en
 
 ### AccomationLocation - (Localización del Alojamiento)
+
 - latitude - Latitud
 - longitude - Longitud,
 - address - Direccion
@@ -26,6 +37,7 @@ Se separara la información del CSV en la siguiente estructura
 - district - Distrito
 
 ### AccomationDetail - (Detalles del Alojamiento)
+
 - reformed - Reformado
 - bedrooms - Habitaciones
 - bathrooms - Baños
@@ -42,26 +54,10 @@ Se separara la información del CSV en la siguiente estructura
 - pool - Piscina
 - garden - Jardín
 - balcony - Balcón
-- Individual heating - Calefacción individual
-- Energetic certification - Certificación energética
-- Equipped Kitchen - Cocina Equipada
-- Air-conditioning - Aire acondicionado
-- Suitable mobility - Apto para personas con movilidad reducida
+- individual_heating - Calefacción individual
+- energetic_certification - Certificación energética
+- equipped_kitchen - Cocina Equipada
+- air_conditioning - Aire acondicionado
+- suitable_mobility - Apto para personas con movilidad reducida
 - plants - Plantas
-- Pets allowed - Se admiten mascotas
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- pets_allowed - Se admiten mascotas
