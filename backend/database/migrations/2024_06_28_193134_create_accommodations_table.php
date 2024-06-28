@@ -24,8 +24,8 @@ return new class extends Migration
             $table->unsignedBigInteger('meters');
             $table->float('meter_price');
             $table->unsignedBigInteger('useful_meters');
-            $table->date('register_at');
-            $table->unsignedTinyInteger('built_in');
+            $table->date('register_at')->nullable();
+            $table->unsignedSmallInteger('built_in')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
