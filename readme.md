@@ -1,15 +1,19 @@
-## Observaciones
+## Ejercicio #1 Importación de datos
+
+### Duración: 4hrs y 40mnts
+
+### Observaciones
 
 - El dato de cocina equipada se repetia en "Cocina equipada" - "Cocina Equipada".
 - El campo "Calefacción individual" posee campos texto y booleandos, se reemplaza TRUE por SI
 - Algunos campos en vez de devolver "FALSE" devuelven texto vacio, se reeemplaza por un "false" booleano
 - El campo fecha viene con formato incorrecto en algunos casos. Por ejemplo: 2019/0/meses, se dejara como NULL
 
-## Analisis
+### Analisis
 
 Se separara la información del CSV en la siguiente estructura
 
-### Accomation - (Alojamiento)
+#### Accomation - (Alojamiento)
 
 El campo "ID" se guarda como "original_id", esto para poder referenciarlo de ser necesario y no perder la secuencia de la tabla.
 
@@ -26,7 +30,7 @@ El campo "ID" se guarda como "original_id", esto para poder referenciarlo de ser
 - register_at - Fecha
 - built_in - Construido en
 
-### AccomationLocation - (Localización del Alojamiento)
+#### AccomationLocation - (Localización del Alojamiento)
 
 - latitude - Latitud
 - longitude - Longitud,
@@ -37,7 +41,7 @@ El campo "ID" se guarda como "original_id", esto para poder referenciarlo de ser
 - neighborhood - Barrio
 - district - Distrito
 
-### AccomationDetail - (Detalles del Alojamiento)
+#### AccomationDetail - (Detalles del Alojamiento)
 
 - reformed - Reformado
 - bedrooms - Habitaciones
