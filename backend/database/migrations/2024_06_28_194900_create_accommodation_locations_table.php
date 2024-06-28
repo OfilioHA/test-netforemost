@@ -13,7 +13,17 @@ return new class extends Migration
     {
         Schema::create('accommodation_locations', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('accommodation_id')
+                ->unique()
+                ->constrained();
+            $table->float('latitude');
+            $table->float('longitude');
+            $table->string('province');
+            $table->string('city');
+            $table->string('street');
+            $table->string('district');
+            $table->string('neighborhood');
+            $table->string('address');
         });
     }
 
