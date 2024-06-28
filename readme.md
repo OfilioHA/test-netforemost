@@ -3,6 +3,7 @@
 - El dato de cocina equipada se repetia en "Cocina equipada" - "Cocina Equipada".
 - El campo "Calefacción individual" posee campos texto y booleandos, se reemplaza TRUE por SI
 - Algunos campos en vez de devolver "FALSE" devuelven texto vacio, se reeemplaza por un "false" booleano
+- El campo fecha viene con formato incorrecto en algunos casos. Por ejemplo: 2019/0/meses, se dejara como NULL
 
 ## Analisis
 
