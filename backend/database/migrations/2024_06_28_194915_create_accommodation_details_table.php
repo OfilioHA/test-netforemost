@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('accommodation_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('accommodation_id')
+                ->unique()
+                ->constrained();
             // Variables Data
             $table->string('individual_heating')->nullable();
             $table->string('energetic_certification')->nullable();
