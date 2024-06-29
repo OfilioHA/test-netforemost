@@ -1,0 +1,14 @@
+<div class="card shadow">
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{ accommodation.title }}</p>
+      <footer class="blockquote-footer mb-0">
+        {{ accommodation.advertiser }}
+      </footer>
+      <small class="text-muted">
+        <i class="bi bi-calendar me-2"></i>
+        {{ accommodation.register_at ?? "Unknow" }}
+      </small>
+    </blockquote>
+  </div>
+</div>
