@@ -5,6 +5,7 @@ namespace App\Patterns\Builders;
 use App\Models\Accommodation;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AccomodationFilterBuilder extends _BaseFilter implements _IBaseFilter
 {
@@ -13,6 +14,7 @@ class AccomodationFilterBuilder extends _BaseFilter implements _IBaseFilter
         $this->byBedRooms();
         $this->byMinimun();
         $this->byMaximun();
+        $this->byHaversine();
         return $this->query;
     }
 
@@ -39,5 +41,31 @@ class AccomodationFilterBuilder extends _BaseFilter implements _IBaseFilter
         $maximun = (int) $this->params['maximun'];
         if (!$maximun) return;
         $this->query->where('price', '<=', $maximun);
+    }
+
+    public function byHaversine()
+    {
+        if (!isset($this->params['use_coordinates'])) return;
+        if (!$this->params['use_coordinates']) return;
+        $latitude = (float) $this->params['latitude'];
+        $longitude = (float) $this->params['longitude'];
+        $distance = (float) $this->params['distance'];
+        $this->query->addSelect(
+            DB::raw("
+                latitude,
+                longitude,
+                (
+                    6371 *
+                    acos(cos(radians($latitude)
+                ) *
+                    cos(radians(latitude)
+                ) *
+                    cos(radians(longitude) - radians($longitude)
+                ) + sin(radians($latitude)
+                ) * sin(radians(latitude))
+                    )
+                ) AS distance")
+        );
+        $this->query->having('distance', '<=', $distance);
     }
 }
