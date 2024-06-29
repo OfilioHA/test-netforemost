@@ -1,0 +1,14 @@
+<div>
+  <div class="d-flex flex-column gap-4 mb-4">
+    @for (accommodation of accommodations; track accommodation.id;) {
+    <accomodations-item [accommodation]="accommodation" />
+    }
+  </div>
+  <ngb-pagination
+    (pageChange)="pageChange($event)"
+    [collectionSize]="total"
+    [pageSize]="perPage"
+    [(page)]="page"
+    [maxSize]="4"
+  />
+</div>
