@@ -33,9 +33,10 @@ class AccommodationService
         return $this->query->paginate(self::PER_PAGE);
     }
 
-    public function calculateZoneAverage($userCoordinates)
+    public function calculateZoneAverage($useCoordinates)
     {
-        if (!$userCoordinates) return null;
+        $useCoordinates = filter_var($useCoordinates, FILTER_VALIDATE_BOOLEAN);
+        if (!$useCoordinates) return null;
         $amount = $this->query->count();
         if (!$amount) return null;
         $accommodations = $this->query->get();
@@ -44,6 +45,7 @@ class AccommodationService
             $carry + $item->meter_price,
             0
         );
-        return (float) $total / $amount;
+        $average = (float) $total / $amount;
+        return (float) number_format($average, 2, '.', '');
     }
 }

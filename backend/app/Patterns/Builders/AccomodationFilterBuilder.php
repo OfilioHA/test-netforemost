@@ -46,7 +46,8 @@ class AccomodationFilterBuilder extends _BaseFilter implements _IBaseFilter
     public function byHaversine()
     {
         if (!isset($this->params['use_coordinates'])) return;
-        if (!$this->params['use_coordinates']) return;
+        $useCoordinates = filter_var($this->params['use_coordinates'], FILTER_VALIDATE_BOOLEAN);
+        if (!$useCoordinates) return;
         $latitude = (float) $this->params['latitude'];
         $longitude = (float) $this->params['longitude'];
         $distance = (float) $this->params['distance'];
