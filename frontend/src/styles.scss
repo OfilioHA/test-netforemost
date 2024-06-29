@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 /* Importing Normalize.css */
-@import 'normalize.css';
+@import "normalize.css";
 
 /* Importing Bootstrap SCSS file. */
 @import "bootswatch/dist/zephyr/variables";
 @import "bootstrap/scss/bootstrap";
+
+.ng-invalid {
+  border-color: var(--bs-form-invalid-border-color);
+}
