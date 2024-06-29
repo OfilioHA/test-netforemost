@@ -19,6 +19,7 @@ export class AccomodationsListComponent implements OnInit, OnChanges {
   public total: number = 5;
   public page: number = 1;
   public perPage: number = 5;
+  public average: number | null = null;
 
   ngOnInit(): void { }
 
@@ -34,9 +35,11 @@ export class AccomodationsListComponent implements OnInit, OnChanges {
   fetchData(page: number, query: any) {
     const response = this.service.getAccommodationsPagination(page, this.query);
     response.subscribe((response) => {
-      this.accommodations = response.data;
-      this.perPage = response.per_page;
-      this.total = response.total;
+      const pagination = response.pagination;
+      this.accommodations = pagination.data;
+      this.perPage = pagination.per_page;
+      this.total = pagination.total;
+      this.average = response.average;
     })
   }
 

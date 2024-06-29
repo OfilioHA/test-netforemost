@@ -12,8 +12,11 @@ class AccommodationController extends Controller
     {
         $service = new AccommodationService();
         $service->createList($request);
-        $total = $service->calculateZoneAverage($request->input('use_coordinates'));
+        $average = $service->calculateZoneAverage($request->input('use_coordinates'));
         $paginated = $service->paginate();
-        return response()->json($paginated);
+        return response()->json([
+            'pagination' => $paginated,
+            'average' => $average
+        ]);
     }
 }
