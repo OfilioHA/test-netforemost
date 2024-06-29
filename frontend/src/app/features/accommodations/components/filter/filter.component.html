@@ -1,0 +1,123 @@
+<form [formGroup]="filterForm" (ngSubmit)="handleSubmit()">
+  <div class="form-group mb-3">
+    <label for="" class="form-label"> Rango de Precios </label>
+    <div class="row align-items-end text-muted">
+      <div class="col form-group">
+        <label class="form-label" for="minimun">Minimo</label>
+        <div class="input-group">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Escriba el Minimo"
+            formControlName="minimum"
+            id="minimun"
+          />
+          <span class="input-group-text">
+            <i class="bi bi-currency-euro"></i>
+          </span>
+        </div>
+      </div>
+      <div class="text-center fs-5 mb-1 p-0" style="width: 30px">
+        <i class="bi bi-arrow-left-right"></i>
+      </div>
+      <div class="col form-group">
+        <label class="form-label" for="maximun">Maximo</label>
+        <div class="input-group">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Escriba el Maximo"
+            formControlName="maximun"
+            id="maximun"
+          />
+          <span class="input-group-text">
+            <i class="bi bi-currency-euro"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="bedrooms">Número de Habitaciones</label>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Cantidad de Habitaciones"
+        formControlName="bedrooms"
+        id="bedrooms"
+      />
+      <span class="input-group-text">
+        <i class="bi bi-house-door"></i>
+      </span>
+    </div>
+  </div>
+
+  <!------------------------------------------------>
+
+  <div class="form-check form-switch mb-3">
+    <label class="form-check-label" for="use_coordinates"
+      >Usar Coordenadas</label
+    >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="use_coordinates"
+      aria-checked="mixed"
+      formControlName="use_coordinates"
+      (change)="handleCoordinatesCheck()"
+    />
+  </div>
+
+  @if(filterForm.value.use_coordinates){
+  <div>
+    <div class="form-group mb-3">
+      <div class="row align-items-end">
+        <div class="col form-group">
+          <label class="form-label" for="latitude">Latitud</label>
+          <input
+            class="form-control"
+            type="number"
+            placeholder="Escriba la Latitud"
+            formControlName="latitude"
+            id="latitude"
+          />
+          <div class="form-text">Entre -90 y 90 grados</div>
+        </div>
+        <div class="col form-group">
+          <label class="form-label" for="longitude">Longitud</label>
+          <input
+            class="form-control"
+            type="number"
+            placeholder="Escriba la longitud"
+            formControlName="longitude"
+            id="longitude"
+          />
+          <div class="form-text">Entre -90 y 90 grados</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="">Distancia</label>
+      <div class="input-group mb-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Escriba la distancia en Klmts"
+          formControlName="distance"
+        />
+        <span class="input-group-text"> Klmt </span>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary">
+      <i class="bi bi-funnel me-2"></i>
+      Filtrar
+    </button>
+  </div>
+</form>

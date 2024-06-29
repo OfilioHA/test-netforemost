@@ -6,11 +6,12 @@ import { ApiService } from '../../core/services/api.service';
     providedIn: 'root',
 })
 export class AccommodationsService extends ApiService {
-    public getAccommodationsPagination(page: number, query: string) {
+    public getAccommodationsPagination(page: number, query: any) {
         const request = this.request('/acccommodations', {
             params: {
-                page: page
-            } 
+                page: page,
+                ...query
+            }
         });
         return request;
     }
