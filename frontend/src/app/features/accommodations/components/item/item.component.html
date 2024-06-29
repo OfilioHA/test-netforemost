@@ -1,13 +1,24 @@
 <div class="card shadow">
   <div class="card-body">
     <blockquote class="blockquote mb-0">
-      <p>{{ accommodation.title }}</p>
-      <footer class="blockquote-footer mb-0">
+      <p class="mb-0">{{ accommodation.title }}</p>
+      <h5 class="my-2">
+        <span class="badge text-bg-primary me-2">
+          {{ accommodation.price }}
+          <i class="bi bi-currency-euro"></i>
+        </span>
+        <span class="badge text-bg-primary">
+          {{ accommodation.meter_price }}
+          <i class="bi bi-currency-euro"></i>
+          m²
+        </span>
+      </h5>
+      <p class="blockquote-footer mb-0 mt-2">
         {{ accommodation.advertiser }}
-      </footer>
+      </p>
       <small class="text-muted">
         <i class="bi bi-calendar me-2"></i>
-        {{ accommodation.register_at ?? "Unknow" }}
+        {{ accommodation.register_at ?? "Desconocido" }}
       </small>
     </blockquote>
   </div>
