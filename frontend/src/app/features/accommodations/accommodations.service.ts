@@ -15,4 +15,12 @@ export class AccommodationsService extends ApiService {
         });
         return request;
     }
+
+    public generateReport(values: any) {
+        const request = this.request('/acccommodations/report', {
+            params: values
+        });
+        return request;
+    }
+
 }
