@@ -19,4 +19,19 @@ class AccommodationController extends Controller
             'average' => $average
         ]);
     }
+
+    public function report(Request $request)
+    {
+        $request->validate([
+            'report' => ['required']
+        ]);
+        $reportType = $request->input('report');
+        $service = new AccommodationService();
+        $service->createList($request);
+        $report = $service->generateReport($reportType);
+        $fileInfo = $service->storageReport($report, $reportType);
+        return response()->json([
+            'path' => "storage/app/$fileInfo[filePath]"
+        ]);
+    }
 }

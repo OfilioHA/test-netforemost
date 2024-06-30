@@ -10,4 +10,5 @@ Route::get('/user', function (Request $request) {
 
 Route::prefix('acccommodations')->group(function () {
     Route::get('/', [AccommodationController::class, 'index']);
+    Route::get('/report', [AccommodationController::class, 'report']);
 });
