@@ -1,0 +1,144 @@
+<form [formGroup]="exportForm" (ngSubmit)="handleSubmit()">
+  <div class="form-group mb-3">
+    <label for="" class="form-label"> Rango de Precios </label>
+    <div class="row align-items-end text-muted">
+      <div class="col form-group">
+        <label class="form-label" for="minimun">Minimo</label>
+        <div class="input-group">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Escriba el Minimo"
+            formControlName="minimum"
+            id="minimun"
+          />
+          <span class="input-group-text">
+            <i class="bi bi-currency-euro"></i>
+          </span>
+        </div>
+      </div>
+      <div class="text-center fs-5 mb-1 p-0" style="width: 30px">
+        <i class="bi bi-arrow-left-right"></i>
+      </div>
+      <div class="col form-group">
+        <label class="form-label" for="maximun">Maximo</label>
+        <div class="input-group">
+          <input
+            type="number"
+            class="form-control"
+            placeholder="Escriba el Maximo"
+            formControlName="maximun"
+            id="maximun"
+          />
+          <span class="input-group-text">
+            <i class="bi bi-currency-euro"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="form-label" for="bedrooms">Número de Habitaciones</label>
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Cantidad de Habitaciones"
+        formControlName="bedrooms"
+        id="bedrooms"
+      />
+      <span class="input-group-text">
+        <i class="bi bi-house-door"></i>
+      </span>
+    </div>
+  </div>
+
+  <!------------------------------------------------>
+
+  <div class="form-check form-switch mb-3">
+    <label class="form-check-label" for="use_coordinates"
+      >Usar Coordenadas</label
+    >
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="use_coordinates"
+      aria-checked="mixed"
+      formControlName="use_coordinates"
+      (change)="handleCoordinatesCheck()"
+    />
+  </div>
+
+  @if(exportForm.value.use_coordinates){
+  <div>
+    <div class="form-group mb-3">
+      <div class="row align-items-end">
+        <div class="col form-group">
+          <label class="form-label" for="latitude">Latitud</label>
+          <input
+            class="form-control"
+            type="number"
+            placeholder="Escriba la Latitud"
+            formControlName="latitude"
+            id="latitude"
+          />
+          <div class="form-text">Entre -90 y 90 grados</div>
+        </div>
+        <div class="col form-group">
+          <label class="form-label" for="longitude">Longitud</label>
+          <input
+            class="form-control"
+            type="number"
+            placeholder="Escriba la longitud"
+            formControlName="longitude"
+            id="longitude"
+          />
+          <div class="form-text">Entre -90 y 90 grados</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label" for="">Distancia</label>
+      <div class="input-group mb-3">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Escriba la distancia en Klmts"
+          formControlName="distance"
+        />
+        <span class="input-group-text"> Klmt </span>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="form-group mb-3">
+    <label class="form-label" for="bedrooms">Tipo de Reporte</label>
+    <select class="form-control" formControlName="report" id="report">
+      <option value="" disabled>Seleccione el tipo</option>
+      <option value="csv">CSV</option>
+      <option value="pdf">PDF</option>
+    </select>
+  </div>
+
+  @if(path){
+  <div class="alert alert-success" role="alert">
+    ¡El reporte se ha guardado exitosamente! Su ruta
+    <strong>
+      {{ path }}
+    </strong>
+  </div>
+  }
+
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary" [disabled]="loading">
+      @if(loading){
+      <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+      } @else{
+      <i class="bi bi-arrow-down-square-fill me-2"></i>
+      } Exportar
+    </button>
+  </div>
+</form>
