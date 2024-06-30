@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AccomodationsListComponent } from '../../components/list/list.component';
 import { AccomodationsFilterComponent } from '../../components/filter/filter.component';
 import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
+import { AccomodationsExportComponent } from '../../components/export/export.component';
 
 @Component({
   selector: 'accommodations-index',
@@ -9,6 +10,7 @@ import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     AccomodationsListComponent,
     AccomodationsFilterComponent,
+    AccomodationsExportComponent,
     NgbNavModule
   ],
   templateUrl: './index.component.html',

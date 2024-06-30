@@ -5,7 +5,7 @@ import { AccomodationsItemComponent } from '../item/item.component';
 import { IAccomodationsItem } from '../../accommodation.type';
 
 @Component({
-  selector: 'accomodations-list',
+  selector: '[accomodations-list]',
   standalone: true,
   imports: [NgbPaginationModule, AccomodationsItemComponent],
   templateUrl: './list.component.html',
@@ -20,26 +20,28 @@ export class AccomodationsListComponent implements OnInit, OnChanges {
   public page: number = 1;
   public perPage: number = 5;
   public average: number | null = null;
+  public loading: boolean = false;
 
   ngOnInit(): void { }
 
   pageChange(page: number): void {
-    this.fetchData(page, this.query)
+    this.fetchData(page)
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes['query'].currentValue)
-    this.fetchData(1, this.query);
+    this.fetchData(1);
   }
 
-  fetchData(page: number, query: any) {
+  fetchData(page: number) {
+    this.loading = true;
     const response = this.service.getAccommodationsPagination(page, this.query);
     response.subscribe((response) => {
       const pagination = response.pagination;
       this.accommodations = pagination.data;
       this.perPage = pagination.per_page;
-      this.total = pagination.total;
+      this.total = (pagination.total) ? pagination.total : 1;
       this.average = response.average;
+      this.loading = false;
     })
   }
 
