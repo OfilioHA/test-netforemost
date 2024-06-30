@@ -66,3 +66,32 @@ El campo "ID" se guarda como "original_id", esto para poder referenciarlo de ser
 - suitable_mobility - Apto para personas con movilidad reducida
 - plants - Plantas
 - pets_allowed - Se admiten mascotas
+
+## Ejercicio #2
+
+### Duracion: 8hrs
+
+Durante este periodo se empezo por crear la interfac grafica para el acceso al usuario. La interfaz le permite al usuario poder filtrar la información y tambien se pagina para que tenga una facil lectura.
+
+Para el filtrado de la información se creo un Patron Builder el cual crear la query necesaria de manera dinamica tomando en cuanta los parametros ingresados. Entro otros patrones o capaz cabe mencionar la capa de Repository donde se generan las consultas y la de servicios que ayuda a separar la logica de negocio.
+
+Del lado de la interfaz grafica, se instalo el modulo de Boostrap y Bootswatch para poder customizar Boostrap de manera rapida con un tema ya definido.
+
+Los filtros solicitados fueron
+
+- Rango de precios (Menor, mayor)
+- Cantidad de Habitaciones
+
+El paso que tomó más tiempo fue el desarrollo de la interfaz de usuario.
+
+## Ejercicio #3
+
+### Duración: 2hrs
+
+Se inicio con un etapa de investigación, puesto que no se conocia como realizar la tarea. Investigando en internet encontre información sobre la [Formula Harvisine](https://es.scribd.com/presentation/675358086/Ley-de-Haversine). 
+
+Una vez comprendida como funciona, se procedio a realizar pruebas y a implementar en el patron Builder de los filtros, esto permitio no solo obtener el promedio del valor de los alojamientos en esa zona, sino tambien poder filtrar y mostrar por la interfaz dichos alojamientos. 
+
+
+
+
